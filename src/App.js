@@ -349,42 +349,72 @@ export default function App() {
       </div>
 
       {/* Investment Section */}
-      <div className="bg-white border-t border-[#eea8ce]/10">
+      <div className="bg-[#fdfaf9] border-t border-[#eea8ce]/10">
         <Section>
           <RevealOnScroll className="text-center mb-16">
-            <h2 className="text-4xl font-light tracking-tight mb-4 text-[#606c5a]">Investment</h2>
-            <p className="text-[#8a917a] font-light italic">For a complete visual identity kit.</p>
+            <h2 className="text-4xl md:text-5xl font-light tracking-tight mb-4 text-[#606c5a]">
+              The <span className="italic font-serif text-[#eea8ce]">Investment.</span>
+            </h2>
+            <p className="text-[#8a917a] font-light text-lg">For a complete, premium visual identity kit.</p>
           </RevealOnScroll>
 
           <div className="max-w-4xl mx-auto">
             <RevealOnScroll>
-              <div className="bg-[#fdfaf9] rounded-[3.5rem] p-12 md:p-20 border border-[#eea8ce]/30 relative overflow-hidden text-center md:text-left">
-                <div className="absolute top-0 left-0 w-full h-2 bg-[#eea8ce]"></div>
+              <div className="bg-[#606c5a] rounded-[3rem] p-10 md:p-14 relative overflow-hidden group shadow-2xl">
+                {/* Background decorative elements */}
+                <div className="absolute top-0 right-0 w-96 h-96 bg-[#eea8ce]/15 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/3 group-hover:bg-[#eea8ce]/25 transition-colors duration-700 pointer-events-none"></div>
+                <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#737a67]/40 rounded-full blur-[60px] translate-y-1/3 -translate-x-1/3 pointer-events-none"></div>
                 
-                <div className="flex flex-col md:flex-row justify-between items-center gap-16">
-                  <div className="space-y-6 flex-1 text-left">
-                    <h4 className="text-[10px] font-bold tracking-[0.3em] text-[#eea8ce] uppercase mb-4">Total Investment</h4>
-                    <div className="text-7xl font-light tracking-tighter text-[#606c5a] mb-8">450€</div>
-                    
-                    <div className="space-y-4 pt-4 border-t border-[#eea8ce]/20">
-                      <div className="flex items-center gap-4 text-[#8a917a] font-light">
-                        <CreditCard size={18} className="text-[#eea8ce]" />
-                        <span><strong>50% deposit</strong> to start</span>
+                <div className="relative z-10 flex flex-col md:flex-row justify-between items-center gap-12 md:gap-16">
+                  <div className="space-y-8 flex-1 text-center md:text-left w-full">
+                    <div>
+                      <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#fdfaf9]/10 border border-[#fdfaf9]/20 mb-6 backdrop-blur-md">
+                        <Sparkles size={14} className="text-[#eea8ce]" />
+                        <span className="text-[10px] font-bold tracking-[0.3em] text-[#fdfaf9] uppercase">Total Investment</span>
                       </div>
-                      <div className="flex items-center gap-4 text-[#8a917a] font-light text-left">
-                        <CreditCard size={18} className="text-[#eea8ce]" />
-                        <span><strong>50% remaining</strong> upon final delivery</span>
+                      <div className="flex items-baseline justify-center md:justify-start gap-2 mb-2">
+                        <span className="text-7xl md:text-8xl font-light tracking-tighter text-[#fdfaf9]">450</span>
+                        <span className="text-4xl md:text-5xl text-[#eea8ce] font-serif italic">€</span>
+                      </div>
+                      <p className="text-[#dfe3d5] font-light text-lg">One-time payment. All inclusive.</p>
+                    </div>
+                    
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-8 border-t border-[#fdfaf9]/10 text-left">
+                      <div className="bg-[#fdfaf9]/5 p-5 rounded-2xl border border-[#fdfaf9]/10 backdrop-blur-md transition-colors hover:bg-[#fdfaf9]/10">
+                        <div className="flex items-center gap-3 mb-3">
+                          <CreditCard size={18} className="text-[#eea8ce]" />
+                          <span className="text-[#fdfaf9] font-medium text-sm">Deposit</span>
+                        </div>
+                        <p className="text-[#dfe3d5] text-xs font-light leading-relaxed"><strong>50%</strong> upfront to secure your project spot in my calendar</p>
+                      </div>
+                      <div className="bg-[#fdfaf9]/5 p-5 rounded-2xl border border-[#fdfaf9]/10 backdrop-blur-md transition-colors hover:bg-[#fdfaf9]/10">
+                        <div className="flex items-center gap-3 mb-3">
+                          <CheckCircle2 size={18} className="text-[#eea8ce]" />
+                          <span className="text-[#fdfaf9] font-medium text-sm">Final Payment</span>
+                        </div>
+                        <p className="text-[#dfe3d5] text-xs font-light leading-relaxed"><strong>50%</strong> upon final delivery of all brand assets</p>
                       </div>
                     </div>
                   </div>
 
-                  <div className="bg-white p-8 rounded-[2.5rem] border border-[#eea8ce]/20 shadow-sm w-full md:w-72">
-                    <h5 className="text-sm font-bold mb-4 text-[#606c5a] text-left">Includes</h5>
-                    <ul className="space-y-3 text-xs text-[#8a917a] font-medium uppercase tracking-wider text-left">
-                      <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-[#eea8ce]"></div> Logo Suite</li>
-                      <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-[#eea8ce]"></div> Color Palette</li>
-                      <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-[#eea8ce]"></div> Typography</li>
-                      <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-[#eea8ce]"></div> Guidelines</li>
+                  <div className="bg-[#fdfaf9] p-8 md:p-10 rounded-[2.5rem] shadow-xl w-full md:w-[340px] relative shrink-0">
+                    <div className="absolute -top-4 -right-2 md:-right-6 bg-[#eea8ce] text-white text-[10px] uppercase tracking-widest font-bold py-2.5 px-5 rounded-full shadow-lg transform rotate-3 z-10 border-2 border-white">
+                      Best Value
+                    </div>
+                    <h5 className="text-sm font-bold mb-6 text-[#606c5a] uppercase tracking-widest text-left">What's Included</h5>
+                    <ul className="space-y-5">
+                      {[
+                        "Primary & Secondary Logos",
+                        "Curated Color Palette",
+                        "Typography System",
+                        "Brand Guidelines PDF",
+                        "Production-Ready Files"
+                      ].map((item, idx) => (
+                        <li key={idx} className="flex items-start gap-3 text-sm text-[#8a917a] font-light text-left text-balance">
+                          <CheckCircle2 size={16} className="text-[#eea8ce] shrink-0 mt-0.5" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
                     </ul>
                   </div>
                 </div>
