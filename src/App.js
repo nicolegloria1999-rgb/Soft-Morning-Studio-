@@ -11,7 +11,10 @@ import {
   Calendar,
   CreditCard,
   Layout,
-  MousePointer2
+  MousePointer2,
+  Sparkles,
+  FileText,
+  Shapes
 } from 'lucide-react';
 
 // --- Componentes Utilitários ---
@@ -53,16 +56,21 @@ const Section = ({ id, className = '', children }) => (
   </section>
 );
 
+const FileBox = ({ files }) => (
+  <div className="mt-4 flex flex-wrap gap-2">
+    {files.map((file, i) => (
+      <span key={i} className="px-2 py-1 bg-white/30 border border-white/20 rounded text-[10px] font-bold tracking-wider uppercase">
+        {file}
+      </span>
+    ))}
+  </div>
+);
+
 // --- Aplicação Principal ---
 
 export default function App() {
-  // Paleta Atualizada: 
-  // Rosa Cliente: #eea8ce
-  // Verde Musgo Leve (Texto/Destaque): #606c5a
-  // Verde Musgo Suave (Secundário): #8a917a
-  // Fundo: #fdfaf9 (Creamy Off-white)
+  // Paleta: #eea8ce (Rosa), #606c5a (Verde), #fdfaf9 (Off-white)
 
-  // Função para abrir o email de aprovação
   const handleApprove = (e) => {
     e.preventDefault();
     const email = "geral@kollestudio.com";
@@ -100,7 +108,7 @@ export default function App() {
         <div className="absolute -bottom-10 -left-20 w-80 h-80 bg-[#8a917a]/10 rounded-full blur-[100px]"></div>
         
         <RevealOnScroll>
-          <span className="text-[10px] font-bold tracking-[0.4em] text-[#eea8ce] uppercase mb-8 block">
+          <span className="text-[10px] font-bold tracking-[0.4em] text-[#eea8ce] uppercase mb-8 block text-center">
             Visual Identity Proposal
           </span>
         </RevealOnScroll>
@@ -116,7 +124,7 @@ export default function App() {
           </p>
         </RevealOnScroll>
         <RevealOnScroll delay={300}>
-          <a href="#designer" className="inline-flex items-center gap-3 bg-[#606c5a] text-[#fdfaf9] px-10 py-5 rounded-full text-sm font-medium hover:bg-[#eea8ce] transition-all duration-500 shadow-sm">
+          <a href="#overview" className="inline-flex items-center gap-3 bg-[#606c5a] text-[#fdfaf9] px-10 py-5 rounded-full text-sm font-medium hover:bg-[#eea8ce] transition-all duration-500 shadow-sm">
             View the Proposal <ArrowRight size={16} />
           </a>
         </RevealOnScroll>
@@ -131,7 +139,7 @@ export default function App() {
                 <h2 className="text-3xl md:text-5xl font-light tracking-tight mb-8 text-[#606c5a]">Meet Your Designer.</h2>
               </RevealOnScroll>
               <RevealOnScroll delay={100}>
-                <div className="space-y-6 text-lg text-[#8a917a] font-light leading-relaxed">
+                <div className="space-y-6 text-lg text-[#8a917a] font-light leading-relaxed text-left">
                   <p>
                     Hi! It is so good to hear from you again. I absolutely loved working with you. Since you already know me (and how things work around here), let’s skip the formalities and get straight to business!
                   </p>
@@ -156,71 +164,134 @@ export default function App() {
         </Section>
       </div>
 
-      {/* Project Overview */}
-      <div className="bg-[#fdfaf9]">
+      {/* Project Overview - Impactful Update */}
+      <div id="overview" className="bg-[#fdfaf9]">
         <Section>
-          <RevealOnScroll className="text-center max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-light tracking-tight mb-8 text-[#606c5a]">Project Overview</h2>
-            <p className="text-xl text-[#8a917a] leading-relaxed font-light">
-              Soft Morning Studio evokes such a beautiful and special mood, and your photography deserves a visual identity that matches that exact aesthetic. The goal of this project is building a professional and cohesive visual identity that perfectly frames the moments you capture.
-            </p>
-          </RevealOnScroll>
-        </Section>
-      </div>
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <RevealOnScroll>
+              <h2 className="text-4xl md:text-6xl font-light tracking-tighter text-[#606c5a] mb-6">
+                Project <br /><span className="italic font-serif text-[#eea8ce]">Overview.</span>
+              </h2>
+              <div className="h-1 w-20 bg-[#eea8ce] mb-8"></div>
+              <p className="text-xl text-[#8a917a] font-light leading-relaxed text-left">
+                Soft Morning Studio evokes such a beautiful and special mood, and your photography deserves a visual identity that matches that exact aesthetic.
+              </p>
+            </RevealOnScroll>
 
-      {/* What's Included - Bento Box Style */}
-      <div className="bg-[#606c5a] text-[#fdfaf9] rounded-[4rem]">
-        <Section>
-          <RevealOnScroll className="text-center mb-24">
-            <h2 className="text-4xl md:text-6xl font-light tracking-tight">What’s Included.</h2>
-          </RevealOnScroll>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <RevealOnScroll delay={100} className="md:col-span-2 bg-[#737a67] rounded-[2.5rem] p-12 border border-[#89917d] relative overflow-hidden group">
-              <div className="relative z-10">
-                <span className="text-[10px] font-bold tracking-[0.3em] text-[#eea8ce] uppercase mb-6 block">Premium Kit</span>
-                <h3 className="text-3xl font-light mb-6">The Brand Foundation Pack</h3>
-                <p className="text-[#dfe3d5] text-lg max-w-md leading-relaxed font-light mb-10">
-                  To give Soft Morning Studio a cohesive and premium feel, I will design a complete brand kit that you can use across your social media, client materials, and beyond.
-                </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="space-y-2">
-                    <h4 className="font-bold text-[#eea8ce]">Logo Suite</h4>
-                    <p className="text-sm text-[#dfe3d5]/80">Designing a primary logo that captures the vibe, alongside secondary marks. Delivered in AI, SVG and PNG.</p>
+            <RevealOnScroll delay={200} className="bg-white p-10 md:p-14 rounded-[3rem] border border-[#eea8ce]/10 shadow-sm relative overflow-hidden">
+              <div className="absolute -top-10 -right-10 w-40 h-40 bg-[#eea8ce]/5 rounded-full blur-3xl"></div>
+              <div className="relative z-10 space-y-8">
+                <div className="flex gap-6 items-start">
+                  <div className="bg-[#eea8ce]/10 p-4 rounded-2xl text-[#eea8ce]">
+                    <SunMedium size={32} />
                   </div>
-                  <div className="space-y-2">
-                    <h4 className="font-bold text-[#eea8ce]">Production Files</h4>
-                    <p className="text-sm text-[#dfe3d5]/80">High-quality, scalable files (AI / PDF / PNG / SVG).</p>
+                  <div>
+                    <h4 className="text-lg font-bold text-[#606c5a] mb-2">The Aesthetic</h4>
+                    <p className="text-[#8a917a] text-sm leading-relaxed">Capturing the warm, airy, and intentional light that defines your work.</p>
+                  </div>
+                </div>
+                <div className="flex gap-6 items-start">
+                  <div className="bg-[#606c5a]/5 p-4 rounded-2xl text-[#606c5a]">
+                    <Camera size={32} />
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-bold text-[#606c5a] mb-2">The Goal</h4>
+                    <p className="text-[#8a917a] text-sm leading-relaxed text-left">Building a professional and cohesive visual identity that perfectly frames the moments you capture.</p>
                   </div>
                 </div>
               </div>
             </RevealOnScroll>
+          </div>
+        </Section>
+      </div>
 
-            <RevealOnScroll delay={200} className="bg-[#737a67] rounded-[2.5rem] p-10 border border-[#89917d] flex flex-col justify-center">
-              <Palette size={32} className="text-[#eea8ce] mb-8" strokeWidth={1.5} />
-              <h3 className="text-2xl font-light mb-4">Color Palette</h3>
-              <p className="text-[#dfe3d5] font-light leading-relaxed">
-                A unified color scheme chosen to complement your style. Delivered in HEX, RGB and CMYK codes.
-              </p>
-            </RevealOnScroll>
+      {/* What's Included */}
+      <div className="bg-[#606c5a] text-[#fdfaf9] rounded-[4rem]">
+        <Section>
+          <RevealOnScroll className="text-center mb-24">
+            <h2 className="text-4xl md:text-6xl font-light tracking-tight">What’s Included.</h2>
+            <p className="text-[#dfe3d5]/70 mt-6 font-light">The complete Brand Foundation Pack to give Soft Morning Studio a premium feel.</p>
+          </RevealOnScroll>
 
-            <RevealOnScroll delay={300} className="bg-[#737a67] rounded-[2.5rem] p-10 border border-[#89917d] flex flex-col justify-center">
-              <Type size={32} className="text-[#eea8ce] mb-8" strokeWidth={1.5} />
-              <h3 className="text-2xl font-light mb-4">Typography System</h3>
-              <p className="text-[#dfe3d5] font-light leading-relaxed">
-                Strategic selection of fonts. Delivered in .otf/.ttf files or direct licensing links.
-              </p>
-            </RevealOnScroll>
-
-            <RevealOnScroll delay={400} className="md:col-span-2 bg-[#737a67] rounded-[2.5rem] p-12 border border-[#89917d] flex items-center justify-between gap-8">
-              <div className="max-w-md">
-                <h3 className="text-2xl font-light mb-4">Brand Guidelines</h3>
-                <p className="text-[#dfe3d5] font-light">
-                  A clear document outlining how to use your new logos, colors and fonts to ensure visual consistency across all touchpoints.
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            {/* Logo Suite - Now its own primary card */}
+            <RevealOnScroll delay={100} className="lg:col-span-2 bg-[#737a67] rounded-[2.5rem] p-12 border border-[#89917d] relative overflow-hidden group flex flex-col justify-between h-full">
+              <div>
+                <span className="text-[10px] font-bold tracking-[0.3em] text-[#eea8ce] uppercase mb-6 block">Foundation</span>
+                <h3 className="text-3xl font-light mb-6 flex items-center gap-4">
+                  <Shapes className="text-[#eea8ce]" /> Logo Suite
+                </h3>
+                <p className="text-[#dfe3d5] text-lg max-w-lg leading-relaxed font-light mb-8">
+                  Designing a beautiful, balanced primary logo that captures the "Soft Morning" vibe, alongside versatile secondary marks and/or submarks.
                 </p>
               </div>
-              <BookOpen size={48} className="text-[#eea8ce] opacity-30 shrink-0" strokeWidth={1} />
+              <div>
+                <h5 className="text-[10px] font-bold text-[#eea8ce] uppercase tracking-widest mb-3">Files Delivered:</h5>
+                <FileBox files={["AI (Vector)", "SVG", "PNG (Transparent)"]} />
+              </div>
             </RevealOnScroll>
+
+            {/* Color Palette */}
+            <RevealOnScroll delay={200} className="bg-[#737a67] rounded-[2.5rem] p-10 border border-[#89917d] flex flex-col justify-between h-full">
+              <div>
+                <Palette size={32} className="text-[#eea8ce] mb-8" strokeWidth={1.5} />
+                <h3 className="text-2xl font-light mb-4">Color Palette</h3>
+                <p className="text-[#dfe3d5] font-light leading-relaxed mb-8">
+                  A unified color scheme specifically chosen to complement your photography style without overpowering your images.
+                </p>
+              </div>
+              <div>
+                <h5 className="text-[10px] font-bold text-[#eea8ce] uppercase tracking-widest mb-3">Files Delivered:</h5>
+                <FileBox files={["HEX (Web)", "RGB", "CMYK"]} />
+              </div>
+            </RevealOnScroll>
+
+            {/* Typography */}
+            <RevealOnScroll delay={300} className="bg-[#737a67] rounded-[2.5rem] p-10 border border-[#89917d] flex flex-col justify-between h-full">
+              <div>
+                <Type size={32} className="text-[#eea8ce] mb-8" strokeWidth={1.5} />
+                <h3 className="text-2xl font-light mb-4 text-left">Typography System</h3>
+                <p className="text-[#dfe3d5] font-light leading-relaxed mb-8 text-left">
+                  A strategic selection of primary and secondary fonts that perfectly complement your brand's aesthetic.
+                </p>
+              </div>
+              <div>
+                <h5 className="text-[10px] font-bold text-[#eea8ce] uppercase tracking-widest mb-3">Files Delivered:</h5>
+                <FileBox files={[".OTF", ".TTF", "Web Links"]} />
+              </div>
+            </RevealOnScroll>
+
+            {/* Brand Guidelines */}
+            <RevealOnScroll delay={400} className="bg-[#737a67] rounded-[2.5rem] p-10 border border-[#89917d] flex flex-col justify-between h-full">
+              <div>
+                <BookOpen size={32} className="text-[#eea8ce] mb-8" strokeWidth={1.5} />
+                <h3 className="text-2xl font-light mb-4">Brand Guidelines</h3>
+                <p className="text-[#dfe3d5] font-light leading-relaxed mb-8">
+                  A clear document outlining how to use your new logos, colors and fonts to ensure visual consistency.
+                </p>
+              </div>
+              <div>
+                <h5 className="text-[10px] font-bold text-[#eea8ce] uppercase tracking-widest mb-3 text-left">Format:</h5>
+                <FileBox files={["Interactive PDF"]} />
+              </div>
+            </RevealOnScroll>
+
+            {/* Production Ready Files */}
+            <RevealOnScroll delay={500} className="bg-[#737a67] rounded-[2.5rem] p-10 border border-[#89917d] flex flex-col justify-between h-full">
+              <div>
+                <FileText size={32} className="text-[#eea8ce] mb-8" strokeWidth={1.5} />
+                <h3 className="text-2xl font-light mb-4 text-left">Production-Ready Files</h3>
+                <p className="text-[#dfe3d5] font-light leading-relaxed mb-8 text-left">
+                  High-quality, scalable files ready for any touchpoint, from social media to high-end print materials.
+                </p>
+              </div>
+              <div>
+                <h5 className="text-[10px] font-bold text-[#eea8ce] uppercase tracking-widest mb-3">Files Delivered:</h5>
+                <FileBox files={["AI", "PDF", "PNG", "SVG"]} />
+              </div>
+            </RevealOnScroll>
+
           </div>
         </Section>
       </div>
@@ -231,8 +302,8 @@ export default function App() {
           <div className="grid lg:grid-cols-2 gap-20">
             <RevealOnScroll>
               <div className="sticky top-32">
-                <h2 className="text-4xl md:text-5xl font-light tracking-tight mb-8 text-[#606c5a]">Process & <br /><span className="italic font-serif">Timeline.</span></h2>
-                <p className="text-lg text-[#8a917a] font-light leading-relaxed mb-10">
+                <h2 className="text-4xl md:text-5xl font-light tracking-tight mb-8 text-[#606c5a]">Process & <br /><span className="italic font-serif text-[#eea8ce]">Timeline.</span></h2>
+                <p className="text-lg text-[#8a917a] font-light leading-relaxed mb-10 text-left">
                   Since we already have a great working rhythm, we can keep this workflow dynamic while making sure we get everything exactly right.
                 </p>
                 <div className="space-y-4">
@@ -265,7 +336,7 @@ export default function App() {
                 <RevealOnScroll key={idx} delay={idx * 100} className="bg-white p-8 rounded-3xl border border-[#eea8ce]/5 shadow-sm">
                   <div className="flex gap-6 items-start">
                     <span className="text-2xl font-serif italic text-[#eea8ce]">{item.step}</span>
-                    <div>
+                    <div className="text-left">
                       <h4 className="text-xl font-bold text-[#606c5a] mb-2">{item.title}</h4>
                       <p className="text-[#8a917a] font-light leading-relaxed text-sm">{item.desc}</p>
                     </div>
@@ -291,7 +362,7 @@ export default function App() {
                 <div className="absolute top-0 left-0 w-full h-2 bg-[#eea8ce]"></div>
                 
                 <div className="flex flex-col md:flex-row justify-between items-center gap-16">
-                  <div className="space-y-6 flex-1">
+                  <div className="space-y-6 flex-1 text-left">
                     <h4 className="text-[10px] font-bold tracking-[0.3em] text-[#eea8ce] uppercase mb-4">Total Investment</h4>
                     <div className="text-7xl font-light tracking-tighter text-[#606c5a] mb-8">450€</div>
                     
@@ -300,7 +371,7 @@ export default function App() {
                         <CreditCard size={18} className="text-[#eea8ce]" />
                         <span><strong>50% deposit</strong> to start</span>
                       </div>
-                      <div className="flex items-center gap-4 text-[#8a917a] font-light">
+                      <div className="flex items-center gap-4 text-[#8a917a] font-light text-left">
                         <CreditCard size={18} className="text-[#eea8ce]" />
                         <span><strong>50% remaining</strong> upon final delivery</span>
                       </div>
@@ -308,8 +379,8 @@ export default function App() {
                   </div>
 
                   <div className="bg-white p-8 rounded-[2.5rem] border border-[#eea8ce]/20 shadow-sm w-full md:w-72">
-                    <h5 className="text-sm font-bold mb-4 text-[#606c5a]">Includes</h5>
-                    <ul className="space-y-3 text-xs text-[#8a917a] font-medium uppercase tracking-wider">
+                    <h5 className="text-sm font-bold mb-4 text-[#606c5a] text-left">Includes</h5>
+                    <ul className="space-y-3 text-xs text-[#8a917a] font-medium uppercase tracking-wider text-left">
                       <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-[#eea8ce]"></div> Logo Suite</li>
                       <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-[#eea8ce]"></div> Color Palette</li>
                       <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-[#eea8ce]"></div> Typography</li>
