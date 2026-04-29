@@ -292,6 +292,36 @@ export default function App() {
               </div>
             </RevealOnScroll>
 
+            {/* Photography Assets */}
+            <RevealOnScroll delay={600} className="bg-[#737a67] rounded-[2.5rem] p-10 border border-[#89917d] flex flex-col justify-between h-full">
+              <div>
+                <Camera size={32} className="text-[#eea8ce] mb-8" strokeWidth={1.5} />
+                <h3 className="text-2xl font-light mb-4 text-left">Photography Assets</h3>
+                <p className="text-[#dfe3d5] font-light leading-relaxed mb-8 text-left">
+                  Custom watermarks and photo overlays ensuring your brand is present on every image you share.
+                </p>
+              </div>
+              <div>
+                <h5 className="text-[10px] font-bold text-[#eea8ce] uppercase tracking-widest mb-3">Files Delivered:</h5>
+                <FileBox files={["PNG (Black & White)", "PNG (Color)"]} />
+              </div>
+            </RevealOnScroll>
+
+            {/* Digital Collateral */}
+            <RevealOnScroll delay={700} className="lg:col-span-2 bg-[#737a67] rounded-[2.5rem] p-10 border border-[#89917d] flex flex-col justify-between h-full">
+              <div>
+                <Layout size={32} className="text-[#eea8ce] mb-8" strokeWidth={1.5} />
+                <h3 className="text-2xl font-light mb-4 text-left">Digital Collateral</h3>
+                <p className="text-[#dfe3d5] font-light leading-relaxed mb-8 text-left">
+                  Templates tailored for a photography studio: a stunning Client Investment Guide and cohesive social media layouts to present your work beautifully.
+                </p>
+              </div>
+              <div>
+                <h5 className="text-[10px] font-bold text-[#eea8ce] uppercase tracking-widest mb-3">Files Delivered:</h5>
+                <FileBox files={["Canva Templates", "PDF"]} />
+              </div>
+            </RevealOnScroll>
+
           </div>
         </Section>
       </div>
@@ -398,9 +428,6 @@ export default function App() {
                   </div>
 
                   <div className="bg-[#fdfaf9] p-8 md:p-10 rounded-[2.5rem] shadow-xl w-full md:w-[340px] relative shrink-0">
-                    <div className="absolute -top-4 -right-2 md:-right-6 bg-[#eea8ce] text-white text-[10px] uppercase tracking-widest font-bold py-2.5 px-5 rounded-full shadow-lg transform rotate-3 z-10 border-2 border-white">
-                      Best Value
-                    </div>
                     <h5 className="text-sm font-bold mb-6 text-[#606c5a] uppercase tracking-widest text-left">What's Included</h5>
                     <ul className="space-y-5">
                       {[
@@ -408,7 +435,9 @@ export default function App() {
                         "Curated Color Palette",
                         "Typography System",
                         "Brand Guidelines PDF",
-                        "Production-Ready Files"
+                        "Production-Ready Files",
+                        "Custom Watermarks",
+                        "Client Pricing Guide"
                       ].map((item, idx) => (
                         <li key={idx} className="flex items-start gap-3 text-sm text-[#8a917a] font-light text-left text-balance">
                           <CheckCircle2 size={16} className="text-[#eea8ce] shrink-0 mt-0.5" />
