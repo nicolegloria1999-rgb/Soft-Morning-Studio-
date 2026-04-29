@@ -80,8 +80,14 @@ export default function App() {
   };
 
   return (
-    <div className="bg-[#fdfaf9] min-h-screen text-[#606c5a] font-sans selection:bg-[#eea8ce] selection:text-white">
+    <div className="bg-[#fdfaf9] min-h-screen text-[#606c5a] font-sans selection:bg-[#eea8ce] selection:text-white relative">
       
+      {/* Film Grain Overlay */}
+      <div 
+        className="pointer-events-none fixed inset-0 z-[100] opacity-[0.03] mix-blend-multiply" 
+        style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}
+      ></div>
+
       {/* Navegação */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#fdfaf9]/90 backdrop-blur-md border-b border-[#eea8ce]/20">
         <div className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
@@ -113,10 +119,26 @@ export default function App() {
           </span>
         </RevealOnScroll>
         <RevealOnScroll delay={100}>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tighter leading-[1.05] mb-10 text-[#606c5a]">
-            Soft Morning <br />
-            <span className="italic font-serif text-[#eea8ce]">Studio.</span>
-          </h1>
+          <div className="relative p-10 md:p-14 group cursor-crosshair mb-10 inline-block">
+            {/* Viewfinder borders */}
+            <div className="absolute top-0 left-0 w-8 h-8 border-t border-l border-[#606c5a]/20 group-hover:border-[#eea8ce] transition-colors duration-500"></div>
+            <div className="absolute top-0 right-0 w-8 h-8 border-t border-r border-[#606c5a]/20 group-hover:border-[#eea8ce] transition-colors duration-500"></div>
+            <div className="absolute bottom-0 left-0 w-8 h-8 border-b border-l border-[#606c5a]/20 group-hover:border-[#eea8ce] transition-colors duration-500"></div>
+            <div className="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-[#606c5a]/20 group-hover:border-[#eea8ce] transition-colors duration-500"></div>
+            
+            {/* Center focus point */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 border border-[#606c5a]/5 rounded-full group-hover:scale-110 transition-transform duration-700 pointer-events-none flex items-center justify-center opacity-0 group-hover:opacity-100">
+              <div className="w-0.5 h-2 bg-[#eea8ce]/40 absolute top-0"></div>
+              <div className="w-0.5 h-2 bg-[#eea8ce]/40 absolute bottom-0"></div>
+              <div className="w-2 h-0.5 bg-[#eea8ce]/40 absolute left-0"></div>
+              <div className="w-2 h-0.5 bg-[#eea8ce]/40 absolute right-0"></div>
+            </div>
+
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tighter leading-[1.05] text-[#606c5a] relative z-10">
+              Soft Morning <br />
+              <span className="italic font-serif text-[#eea8ce]">Studio.</span>
+            </h1>
+          </div>
         </RevealOnScroll>
         <RevealOnScroll delay={200}>
           <p className="text-lg md:text-xl text-[#8a917a] max-w-xl mx-auto mb-14 font-light leading-relaxed">
@@ -292,35 +314,7 @@ export default function App() {
               </div>
             </RevealOnScroll>
 
-            {/* Photography Assets */}
-            <RevealOnScroll delay={600} className="bg-[#737a67] rounded-[2.5rem] p-10 border border-[#89917d] flex flex-col justify-between h-full">
-              <div>
-                <Camera size={32} className="text-[#eea8ce] mb-8" strokeWidth={1.5} />
-                <h3 className="text-2xl font-light mb-4 text-left">Photography Assets</h3>
-                <p className="text-[#dfe3d5] font-light leading-relaxed mb-8 text-left">
-                  Custom watermarks and photo overlays ensuring your brand is present on every image you share.
-                </p>
-              </div>
-              <div>
-                <h5 className="text-[10px] font-bold text-[#eea8ce] uppercase tracking-widest mb-3">Files Delivered:</h5>
-                <FileBox files={["PNG (Black & White)", "PNG (Color)"]} />
-              </div>
-            </RevealOnScroll>
 
-            {/* Digital Collateral */}
-            <RevealOnScroll delay={700} className="lg:col-span-2 bg-[#737a67] rounded-[2.5rem] p-10 border border-[#89917d] flex flex-col justify-between h-full">
-              <div>
-                <Layout size={32} className="text-[#eea8ce] mb-8" strokeWidth={1.5} />
-                <h3 className="text-2xl font-light mb-4 text-left">Digital Collateral</h3>
-                <p className="text-[#dfe3d5] font-light leading-relaxed mb-8 text-left">
-                  Templates tailored for a photography studio: a stunning Client Investment Guide and cohesive social media layouts to present your work beautifully.
-                </p>
-              </div>
-              <div>
-                <h5 className="text-[10px] font-bold text-[#eea8ce] uppercase tracking-widest mb-3">Files Delivered:</h5>
-                <FileBox files={["Canva Templates", "PDF"]} />
-              </div>
-            </RevealOnScroll>
 
           </div>
         </Section>
@@ -435,9 +429,7 @@ export default function App() {
                         "Curated Color Palette",
                         "Typography System",
                         "Brand Guidelines PDF",
-                        "Production-Ready Files",
-                        "Custom Watermarks",
-                        "Client Pricing Guide"
+                        "Production-Ready Files"
                       ].map((item, idx) => (
                         <li key={idx} className="flex items-start gap-3 text-sm text-[#8a917a] font-light text-left text-balance">
                           <CheckCircle2 size={16} className="text-[#eea8ce] shrink-0 mt-0.5" />
